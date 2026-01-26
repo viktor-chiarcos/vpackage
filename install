@@ -3,7 +3,7 @@
 echo "Installation gestartet."
 echo `pwd` > ~/vpackage-path.log
 if [ -e ~/bin ]
-then echo "[VPACKAGE INSTALLER SKRIPT] $HOME/bin exestiert bereits" >2
+then echo "[VPACKAGE INSTALLER SKRIPT] $HOME/bin exestiert bereits" > ~/vpackage_log
 else mkdir ~/bin 
 fi
 ln -s $PWD/vpackage ~/bin/vpackage 
