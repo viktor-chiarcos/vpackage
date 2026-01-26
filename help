@@ -1,7 +1,7 @@
 Verwende install um Anwendungen zu installieren
 z.B. vpackage install git-center
-Verwende uninstall um Anwendungen zu löschen
-z.B. vpackage uninstall git-center
+Verwende remove um Anwendungen zu löschen
+z.B. vpackage remove git-center
 Verwende list um alle installierbaren Anwendungen zu sehen
 z.B. vpackage list
 	Zusätzlich: Such-Filter
