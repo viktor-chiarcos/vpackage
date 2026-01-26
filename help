@@ -1,0 +1,12 @@
+Verwende install um Anwendungen zu installieren
+z.B. vpackage install git-center
+Verwende uninstall um Anwendungen zu löschen
+z.B. vpackage uninstall git-center
+Verwende list um alle installierbaren Anwendungen zu sehen
+z.B. vpackage list
+	Zusätzlich: Such-Filter
+	z.B. vpackage list | egrep "Suche"
+Verwende update um Anwendungen zu aktualisieren
+z.B. vpackage update git-center
+Verwende update um dieses Skript zu aktuallisieren
+z.B. vpackage update

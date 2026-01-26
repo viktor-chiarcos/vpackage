@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo `pwd` > ~/vpackage-path.log
+if [ -e ~/bin ]
+then echo "[VPACKAGE INSTALLER SKRIPT] $HOME/bin exestiert bereits" >2
+else mkdir ~/bin 
+ln -s $PWD/vpackage ~/bin/vpackage 
+echo "HINWEIS: Du darft den Pfad vom Repo nicht verändern!"
