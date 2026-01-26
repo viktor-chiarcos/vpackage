@@ -22,4 +22,4 @@ Installiere vpackage mit folgendem Befehl:
 
 Um die Hilfe anzuzeigen verwende einfach den Befehl:
 
-    vpackage
+    vpackage help
