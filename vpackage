@@ -1,32 +1,31 @@
 #!/bin/bash
 
 SCRIPT_PATH=`cat ~/vpackage-path.log`
-if echo $1 | egrep "install" >&/dev/null
+if echo $1 | egrep -o "install" >&/dev/null
 then 
 	if [ -e $SCRIPT_PATH/packages/$2/install ]
-	then curl -L "`cat $SCRIPT_PATH/packages/$2/install`" | bash 
+	then 
+		curl -L "`cat $SCRIPT_PATH/packages/$2/install`" | bash 
 	else echo "vpackage: Fehler: Ungültiges Paket"
 	fi
-else if echo $1 | egrep "update" >&/dev/null
+else if echo $1 | egrep -o "update" >&/dev/null
 	then if echo $2 | egrep -v "." >&/dev/null
 		then cd $SCRIPT_PATH ; git pull
 		else if [ -e "$SCRIPT_PATH/packages/$2/update" ]
-			then curl -L "`cat vpackage-path.log`/$2/update" | bash
+			then curl -L `cat "$SCRIPT_PATH/packages/$2/update"` | bash
 			else echo "vpackage: Fehler: Diese Anwendung exestiert nicht oder ist nicht aktuallisierbar."
 			fi
 	fi
 		fi
-		if echo $1  | egrep "remove" >&/dev/null
-		then if [ -e "$SCRIPT_PATH/packages/$2/uninstall" ]
+		if [ -e "$SCRIPT_PATH/packages/$2/uninstall" ]
 			then curl -L `cat $SCRIPT_PATH/packages/$2/uninstall` | bash 
 			else echo "vpackage: Fehler: Diese Anwendung exestiert nicht oder ist nicht (mit vpackage) löschbar."
-			
-			fi
 		fi
-		if echo $1 | egrep list >&/dev/null  
+		fi
+		if echo $1 | egrep -o list >&/dev/null  
 		then cat "`cat ~/vpackage-path.log`/list" ; echo ""
 		fi
-		if echo $1 | egrep "help" >&/dev/null
+		if echo $1 | egrep -o "help" >&/dev/null
 		then echo "vpackage Hilfe" ; cat "`cat ~/vpackage-path.log`/help" ; echo ""
 		fi
 	fi
