@@ -17,10 +17,12 @@ else if echo $1 | egrep -o "update" >&/dev/null
 			fi
 	fi
 		fi
-		if [ -e "$SCRIPT_PATH/packages/$2/uninstall" ]
+		if echo $1 | egrep -o "remove" >&/dev/null
+		then
+			if [ -e "$SCRIPT_PATH/packages/$2/uninstall" ]
 			then curl -L `cat $SCRIPT_PATH/packages/$2/uninstall` | bash 
 			else echo "vpackage: Fehler: Diese Anwendung exestiert nicht oder ist nicht (mit vpackage) löschbar."
-		fi
+			fi
 		fi
 		if echo $1 | egrep -o list >&/dev/null  
 		then cat "`cat ~/vpackage-path.log`/list" ; echo ""
@@ -28,4 +30,4 @@ else if echo $1 | egrep -o "update" >&/dev/null
 		if echo $1 | egrep -o "help" >&/dev/null
 		then echo "vpackage Hilfe" ; cat "`cat ~/vpackage-path.log`/help" ; echo ""
 		fi
-	fi
+fi
