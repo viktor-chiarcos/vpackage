@@ -11,7 +11,7 @@ Falls er nicht exestiert schreibe den Befehl `mkdir <Dein Pfad für das Repo>` u
 
 Lade das Repo herunter und gehe dahin:
 
-    git pull https://github.com/viktor-chiarcos/vpackage
+    git clone https://github.com/viktor-chiarcos/vpackage
     cd vpackage
 
 Installiere vpackage mit folgendem Befehl:
