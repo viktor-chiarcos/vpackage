@@ -5,6 +5,6 @@ permalink: /liste/
 
 # Liste
 
-<text src="../list"/>
+{%- include list -%}
   
 Diese Liste kannst du auch mit `vpackage list` abrufen
