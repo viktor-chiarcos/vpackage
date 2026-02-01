@@ -5,6 +5,6 @@ permalink: /liste/
 
 # Liste
 
-**Wegen Technischen Problemen kann die Liste derzeit nicht angezeigt werden.**
+<text src="../list"/>
   
 Diese Liste kannst du auch mit `vpackage list` abrufen
