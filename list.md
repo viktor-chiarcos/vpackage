@@ -2,13 +2,7 @@
 layout: mypage
 permalink: /liste/
 ---
-<script>
-  sleep(5)
-  location.href() = "../list"
-</script>
 
-
-# Liste
-
-
-**Information:** *Sie werden in 5 Sekunden zur Liste weitergeleitet*
+**[BESTÄTIGUNG]**
+*Möchten sie diese Seite verlassen und zur Textdatei "list" gehen?*
+[***Ja***](../list) [*Nein, auf Seite bleiben*](.) [*Nein*, **Auf letzte Seite gehen**](javascript:history.go%20(-1)) 
