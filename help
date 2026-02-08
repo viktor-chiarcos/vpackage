@@ -10,3 +10,5 @@ Verwende update um Anwendungen zu aktualisieren
 z.B. vpackage update git-center
 Verwende update um dieses Skript zu aktuallisieren
 z.B. vpackage update
+Verwende gui um auf die App zu gehen
+z.B. vpackage gui
