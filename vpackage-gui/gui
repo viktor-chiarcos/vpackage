@@ -17,7 +17,7 @@ def RemoveButton():
    thetext = text.get('1.0', 'end')
    os.system(f"~/vpackage-gui/term remove {thetext}")
 def license():
-   os.system(f"~/vpackage-gui/browser https://github.com/viktor-chiarcos/vpackage/blob/master/LICENSE")
+   os.system(f"~/vpackage-gui/browser https://github.com/viktor-chiarcos/vpackage/raw/refs/heads/master/LICENSE")
 #def Knopf1Command():
 #   os.system("python3 /home/viktor-chiarcos/vpackage-gui/gui-window2.pyw")
 Fenster = Tk()
@@ -33,7 +33,7 @@ scrollbar.pack( side = RIGHT, fill=Y )
 with open("./vpackage-path.log","rt") as inhalt:
    datei=inhalt.read().strip().split("\n")[-1]+"/list"
    with(open(datei,"rt")) as mehr_inhalt:
-      zeile=["Liste"]+mehr_inhalt.readlines()#+["Inhalt"]
+      zeile=["Liste mit Packages"]+mehr_inhalt.readlines()#+["Inhalt"]
 
 mycanvas = Canvas(Fenster, yscrollcommand = scrollbar.set, xscrollcommand = scrollbar.set, width=1350 , height=700 )
 #Knopf1=Button(Fenster,text="Drück mich!",command=Knopf1Command)
