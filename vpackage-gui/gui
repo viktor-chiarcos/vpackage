@@ -1,0 +1,58 @@
+#!/bin/python3
+
+##133x35
+import sys
+from tkinter import *
+import os
+def InstallerButton():
+   thetext = text.get('1.0', 'end')
+   os.system(f"~/vpackage-gui/term install {thetext}")
+def UpdaterButton():
+   thetext = text.get('1.0', 'end')
+   os.system(f"~/vpackage-gui/term update {thetext}")
+def VpackageUpdaterButton():
+   thetext = text.get('1.0', 'end')
+   os.system(f"~/vpackage-gui/term update")
+def RemoveButton():
+   thetext = text.get('1.0', 'end')
+   os.system(f"~/vpackage-gui/term remove {thetext}")
+#def Knopf1Command():
+#   os.system("python3 /home/viktor-chiarcos/vpackage-gui/gui-window2.pyw")
+Fenster = Tk()
+Fenster.title("Vpackage GUI")
+Fenster.minsize(width=1350 , height=700)#0)
+scrollbar = Scrollbar(Fenster)
+scrollbar.pack( side = RIGHT, fill=Y )
+
+
+with open("./vpackage-path.log","rt") as inhalt:
+   datei=inhalt.read().strip().split("\n")[-1]+"/list"
+   with(open(datei,"rt")) as mehr_inhalt:
+      zeile=["Liste"]+mehr_inhalt.readlines()#+["Inhalt"]
+
+mycanvas = Canvas(Fenster, yscrollcommand = scrollbar.set, xscrollcommand = scrollbar.set, width=1350 , height=700 )
+#Knopf1=Button(Fenster,text="Drück mich!",command=Knopf1Command)
+#Knopf1.pack()
+
+mylist = Listbox(Fenster)
+for line in zeile:
+   zeilen = line
+   mylist.insert(END, zeilen)
+   
+mylist.pack( fill = BOTH )
+text = Text(Fenster, width=165, height=1)
+text.insert('1.0', 'Paketname eingeben: z.B. rpi.pip3')
+InstallButton=Button(Fenster, text="Eingabe installieren", command=InstallerButton)
+InstallButton.pack()
+UpdateButton=Button(Fenster, text="Eingabe aktualisieren", command=UpdaterButton)
+UpdateButton.pack()
+VpackageUpdateButton=Button(Fenster, text="Vpackage aktuallisieren", command=VpackageUpdaterButton)
+VpackageUpdateButton.pack()
+RemoveButton=Button(Fenster, text="Eingabe deinstallieren", command=RemoveButton)
+RemoveButton.pack()
+thetext = text.get('1.0', 'end')
+print(thetext)
+text.pack()
+scrollbar.config( command = mycanvas.yview )
+scrollbar.config( command = mycanvas.xview )
+mainloop()
