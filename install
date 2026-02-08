@@ -7,5 +7,5 @@ then echo "[VPACKAGE INSTALLER SKRIPT] $HOME/bin exestiert bereits" > ~/vpackage
 else mkdir ~/bin 
 fi
 ln -s $PWD/vpackage ~/bin/vpackage 
-cp vpackage-gui ~/vpackage-gui
+ln -s vpackage-gui ~/vpackage-gui
 echo "HINWEIS: Du darft den Pfad vom Repo nicht verändern!"
