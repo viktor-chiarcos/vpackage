@@ -1,0 +1,12 @@
+#!/bin/bash
+if [ -e /usr/bin/librewolf ]
+then librewolf $1
+elif [ -e /usr/bin/firefox ]
+then firefox $1
+elif [ -e /usr/bin/chromium-browser ]
+then chromium-browser $1
+elif [ -e /usr/bin/chromium ]
+then chromium $1
+elif whereis -b google-chrome | cut -f 2 -d ":" | cut -f 2 -d " " >&/dev/null
+then google-chrome $1
+fi

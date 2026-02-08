@@ -16,6 +16,8 @@ def VpackageUpdaterButton():
 def RemoveButton():
    thetext = text.get('1.0', 'end')
    os.system(f"~/vpackage-gui/term remove {thetext}")
+def license():
+   os.system(f"~/vpackage-gui/browser https://github.com/viktor-chiarcos/vpackage/blob/master/LICENSE")
 #def Knopf1Command():
 #   os.system("python3 /home/viktor-chiarcos/vpackage-gui/gui-window2.pyw")
 Fenster = Tk()
@@ -55,8 +57,10 @@ RemoveButton=Button(Fenster, text="Eingabe deinstallieren", command=RemoveButton
 RemoveButton.pack()
 thetext = text.get('1.0', 'end')
 text.pack()
-Info=Label(Fenster, text=f"Angemeldet als {login2}\nMit der vpackage Updater-Funktion wird das Interface auch aktualisiert.\n\nOffizielles Interface für vpackage\n08.02.2026")
+Info=Label(Fenster, text=f"Angemeldet als {login2}\nMit der vpackage Updater-Funktion wird das Interface auch aktualisiert.\n\nOffizielles Interface für vpackage\n08.02.2026\n\nDies ist ein Open-Source Projekt")
 Info.pack()
+licenseButton=Button(Fenster, text="Lizenz im Browser öffnen", command=license)
+licenseButton.pack()
 scrollbar.config( command = mycanvas.yview )
 scrollbar.config( command = mycanvas.xview )
 mainloop()
