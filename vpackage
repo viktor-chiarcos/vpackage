@@ -33,4 +33,5 @@ else if echo $1 | egrep -o "update" >&/dev/null
 		if echo $1 | egrep "gui" >&/dev/null
 		then cd ~
 		python3 $HOME/vpackage-gui/gui
+		fi
 fi
