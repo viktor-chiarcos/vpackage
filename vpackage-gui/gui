@@ -18,6 +18,9 @@ def RemoveButton():
    os.system(f"~/vpackage-gui/term remove {thetext}")
 def license():
    os.system(f"~/vpackage-gui/browser https://github.com/viktor-chiarcos/vpackage/raw/refs/heads/master/LICENSE")
+def de_license():
+   os.system(f"~/vpackage-gui/browser https://github.com/viktor-chiarcos/vpackage/raw/refs/heads/master/LICENSE.de.md")
+
 #def Knopf1Command():
 #   os.system("python3 /home/viktor-chiarcos/vpackage-gui/gui-window2.pyw")
 Fenster = Tk()
@@ -61,6 +64,8 @@ Info=Label(Fenster, text=f"Angemeldet als {login2}\nMit der vpackage Updater-Fun
 Info.pack()
 licenseButton=Button(Fenster, text="Lizenz im Browser öffnen", command=license)
 licenseButton.pack()
+license2Button=Button(Fenster, text="Auf Deutsch übersetzte Lizenz im Browser öffnen", command=de_license)
+license2Button.pack()
 scrollbar.config( command = mycanvas.yview )
 scrollbar.config( command = mycanvas.xview )
 mainloop()
