@@ -28,9 +28,10 @@ os.system("echo $USER@`hostname` > ~/login")
 with open("./login","rt") as login:
    login2=login.read()
 Fenster.title(f"Vpackage GUI - Das grafische Interface für vpackage")
-Fenster.minsize(width=1350 , height=700)#0)
+Fenster.minsize(width=1265 , height=700)#0)
 scrollbar = Scrollbar(Fenster)
 scrollbar.pack( side = RIGHT, fill=Y )
+
 
 
 with open("./vpackage-path.log","rt") as inhalt:
@@ -48,7 +49,7 @@ for line in zeile:
    mylist.insert(END, zeilen)
    
 mylist.pack( fill = BOTH )
-text = Text(Fenster, width=165, height=1)
+text = Text(Fenster, width=150, height=1)
 text.insert('1.0', 'Paketname eingeben: z.B. rpi.pip3')
 InstallButton=Button(Fenster, text="Eingabe installieren", command=InstallerButton)
 InstallButton.pack()
@@ -66,6 +67,7 @@ licenseButton=Button(Fenster, text="Lizenz im Browser öffnen", command=license)
 licenseButton.pack()
 license2Button=Button(Fenster, text="Auf Deutsch übersetzte Lizenz im Browser öffnen", command=de_license)
 license2Button.pack()
+
 scrollbar.config( command = mycanvas.yview )
 scrollbar.config( command = mycanvas.xview )
 mainloop()
