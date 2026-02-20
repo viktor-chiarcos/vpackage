@@ -24,6 +24,16 @@ Um die Hilfe anzuzeigen verwende einfach den Befehl:
 
     vpackage help
 
+# Liste mit Packages
+
+## Möglichkeit 1: Terminal (empfohlen)
+
+        vpackage list
+## Möglichkeit 2: Übers Web
+
+### [Liste amzeigen](/vpackage/liste/)
+
+
 # Hinweis
 
 Diese Installation gillt nur für dein Benutzerkonto
@@ -31,3 +41,4 @@ Diese Installation gillt nur für dein Benutzerkonto
 Um den Namen von deinem Konto abzurufen verwende
 
     echo $USER
+
