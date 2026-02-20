@@ -2,6 +2,7 @@
 layout: default
 permalink: /liste/
 ---
+<title>Vpackage Liste</title>
 
 # Vpackage Liste
 
