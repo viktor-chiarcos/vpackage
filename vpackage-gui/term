@@ -1,9 +1,7 @@
 #!/bin/bash
 
 if [ -e /usr/bin/lxterminal ]
-then lxterminal -e "vpackage $1 $2 ; echo fertig ;read"
-elif [ -e /usr/bin/xfce4-terminal ]
-then xfce4-terminal -e "vpackage $1 $2 ; echo fertig ;read"
+then lxterminal -e "clear ; vpackage $1 $2 ; echo fertig ; read" 
 elif [ -e /usr/bin/uxterm ]
 then uxterm -e "vpackage $1 $2 ; echo fertig ; read"
 elif [ -e /usr/bin/xterm ]
@@ -12,7 +10,7 @@ else python3 -c '\
 from tkinter import * 
 Fenster=Tk()
 Fenster.title("Fehler")
-Anzeige=Label(Fenster, text="Es ist kein vorgegebenes Terminal in der Liste, dass auf ihrem System verfügbar ist.\nAktuallisieren sie das oder fordern sie ein PR auf.")
+Anzeige=Label(Fenster, text="Es ist kein vorgegebenes Terminal in der Liste, dass auf ihrem System verfügbar ist.\nInstallieren sie z.B. xfce4-terminal mit apt oder fordern sie ein PR auf")
 Anzeige.pack()
 Fenster.mainloop()'
 fi

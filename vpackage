@@ -1,37 +1,85 @@
 #!/bin/bash
 
+# Farben
+
+	txtblk='\e[0;30m' # Black - Regular
+	txtred='\e[0;31m' # Red
+	txtgrn='\e[0;32m' # Green
+	txtylw='\e[0;33m' # Yellow
+	txtblu='\e[0;34m' # Blue
+	txtpur='\e[0;35m' # Purple
+	txtcyn='\e[0;36m' # Cyan
+	txtwht='\e[0;37m' # White
+	bldblk='\e[1;30m' # Black - Bold
+	bldred='\e[1;31m' # Red
+	bldgrn='\e[1;32m' # Green
+	bldylw='\e[1;33m' # Yellow
+	bldblu='\e[1;34m' # Blue
+	bldpur='\e[1;35m' # Purple
+	bldcyn='\e[1;36m' # Cyan
+	bldwht='\e[1;37m' # White
+	unkblk='\e[4;30m' # Black - Underline
+	undred='\e[4;31m' # Red
+	undgrn='\e[4;32m' # Green
+	undylw='\e[4;33m' # Yellow
+	undblu='\e[4;34m' # Blue
+	undpur='\e[4;35m' # Purple
+	undcyn='\e[4;36m' # Cyan
+	undwht='\e[4;37m' # White
+	bakblk='\e[40m'   # Black - Background
+	bakred='\e[41m'   # Red
+	bakgrn='\e[42m'   # Green
+	bakylw='\e[43m'   # Yellow
+	bakblu='\e[44m'   # Blue
+	bakpur='\e[45m'   # Purple
+	bakcyn='\e[46m'   # Cyan
+	bakwht='\e[47m'   # White
+	txtrst='\e[0m'    # Text Reset
+
+title() {
+	echo -e -ne "\033]0;$*\007"
+}
+
 SCRIPT_PATH=`cat ~/vpackage-path.log`
-if echo $1 | egrep -o "install" >&/dev/null
+if echo -e $1 | egrep -o "install" >&/dev/null
 then 
+	title Installiere $2 - Vpackage 
 	if [ -e $SCRIPT_PATH/packages/$2/install ]
 	then 
 		curl -L "`cat $SCRIPT_PATH/packages/$2/install`" | bash 
-	else echo "vpackage: Fehler: Ungültiges Paket"
+	else echo -e "${bldcyn}[vpackage]${txtred} Fehler: Ungültiges Paket${txtrst}"
 	fi
-else if echo $1 | egrep -o "update" >&/dev/null
-	then if echo $2 | egrep -v "." >&/dev/null
+else if echo -e $1 | egrep -o "update" >&/dev/null
+	then if echo -e $2 | egrep -v "." >&/dev/null
+		title Aktuallisiere Vpackage über git
 		then cd $SCRIPT_PATH ; git pull
-		else if [ -e "$SCRIPT_PATH/packages/$2/update" ]
-			then curl -L `cat "$SCRIPT_PATH/packages/$2/update"` | bash
-			else echo "vpackage: Fehler: Diese Anwendung exestiert nicht oder ist nicht aktuallisierbar."
+		else
+			title Aktuallisiere $2 - Vpackage 
+			if [ -e "$SCRIPT_PATH/packages/$2/update" ]
+			then
+
+				curl -L `cat "$SCRIPT_PATH/packages/$2/update"` | bash
+			else echo -e "${bldcyn}[vpackage]${txtred} Fehler: Diese Anwendung exestiert nicht oder ist nicht aktuallisierbar.$txtrst"
 			fi
 	fi
 		fi
-		if echo $1 | egrep -o "remove" >&/dev/null
+		if echo -e $1 | egrep -o "remove" >&/dev/null
 		then
+			title Deinstalliere $2 - Vpackage 
 			if [ -e "$SCRIPT_PATH/packages/$2/uninstall" ]
 			then curl -L `cat $SCRIPT_PATH/packages/$2/uninstall` | bash 
-			else echo "vpackage: Fehler: Diese Anwendung exestiert nicht oder ist nicht (mit vpackage) löschbar."
+			else echo -e "vpackage: Fehler: Diese Anwendung exestiert nicht oder ist nicht (mit vpackage) löschbar."
 			fi
 		fi
-		if echo $1 | egrep -o list >&/dev/null  
-		then cat "`cat ~/vpackage-path.log`/list" ; echo ""
+		if echo -e $1 | egrep -o list >&/dev/null  
+		then cat "`cat ~/vpackage-path.log`/list" ; echo -e ""
 		fi
-		if echo $1 | egrep -o "help" >&/dev/null
-		then echo "vpackage Hilfe" ; cat "`cat ~/vpackage-path.log`/help" ; echo ""
+		if echo -e $1 | egrep -o "help" >&/dev/null
+		then echo -e "vpackage Hilfe" ; cat "`cat ~/vpackage-path.log`/help" ; echo -e ""
 		fi
-		if echo $1 | egrep "gui" >&/dev/null
+		if echo -e $1 | egrep "gui" >&/dev/null
 		then cd ~
+		
 		python3 $HOME/vpackage-gui/gui
 		fi
 fi
