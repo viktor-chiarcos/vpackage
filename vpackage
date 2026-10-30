@@ -45,19 +45,18 @@ if echo -e $1 | egrep -o "install" >&/dev/null
 then 
 	title Installiere $2 - Vpackage 
 	if [ -e $SCRIPT_PATH/packages/$2/install ]
-	then 
-		curl -L "`cat $SCRIPT_PATH/packages/$2/install`" | bash 
-	else echo -e "${bldcyn}[vpackage]${txtred} Fehler: Ungültiges Paket${txtrst}"
+		then 
+			curl -L "`cat $SCRIPT_PATH/packages/$2/install`" | bash 
+		else echo -e "${bldcyn}[vpackage]${txtred} Fehler: Ungültiges Paket${txtrst}"
 	fi
-else if echo -e $1 | egrep -o "update" >&/dev/null
-	then if echo -e $2 | egrep -v "." >&/dev/null
-		title Aktuallisiere Vpackage über git
-		then cd $SCRIPT_PATH ; git pull
-		else
-			title Aktuallisiere $2 - Vpackage 
+else if echo -e $1 | egrep -o "update" >&/dev/null 
+	then if echo $2 | egrep -v "." 
+		
+		then title Aktuallisiere Vpackage über git ; cd $SCRIPT_PATH ; git pull
+	else
+		title Aktuallisiere $2 - Vpackage 
 		if [ -e "$SCRIPT_PATH/packages/$2/update" ]
 			then
-
 				curl -L `cat "$SCRIPT_PATH/packages/$2/update"` | bash
 			else echo -e "${bldcyn}[vpackage]${txtred} Fehler: Diese Anwendung exestiert nicht oder ist nicht aktuallisierbar.$txtrst"
 			fi
