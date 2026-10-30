@@ -55,7 +55,7 @@ else if echo -e $1 | egrep -o "update" >&/dev/null
 		then cd $SCRIPT_PATH ; git pull
 		else
 			title Aktuallisiere $2 - Vpackage 
-			if [ -e "$SCRIPT_PATH/packages/$2/update" ]
+		if [ -e "$SCRIPT_PATH/packages/$2/update" ]
 			then
 
 				curl -L `cat "$SCRIPT_PATH/packages/$2/update"` | bash
